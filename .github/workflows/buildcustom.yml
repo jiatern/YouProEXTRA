@@ -1,4 +1,4 @@
-name: Build IPA with iSponsorBlock (Custom .deb)
+name: Build IPA with Custom .deb tweak
 
 on:
   workflow_dispatch:
