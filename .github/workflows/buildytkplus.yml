@@ -272,7 +272,7 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/youquality.deb
 
       - name: Clone and Build YouChooseQuality
-        if: steps.cache_tweaks.outputs.cache_youchoose_hit != 'true'
+        if: inputs.youchoose == true && steps.cache_tweaks.outputs.cache_youchoose_hit != 'true'
         run: |
           git clone --quiet https://github.com/PoomSmart/YouChooseQuality.git
           cd YouChooseQuality
