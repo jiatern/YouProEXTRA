@@ -101,6 +101,9 @@ jobs:
 
       - name: Install cyan
         run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
+        
+      - name: Install ldid
+        run: brew install ldid
 
       - name: Inject Tweaks Into IPA
         run: |
