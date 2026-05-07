@@ -99,11 +99,10 @@ jobs:
           unzip -q youtube.ipa -d ytextracted
           echo "YT_VERSION=$(grep -A 1 '<key>CFBundleVersion</key>' ytextracted/Payload/YouTube.app/Info.plist | grep '<string>' | awk -F'[><]' '{print $3}')" >> $GITHUB_ENV
 
-      - name: Install cyan
-        run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
-        
-      - name: Install ldid
-        run: brew install ldid
+      - name: Install cyan and ldid
+        run: |
+          pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
+          brew install ldid
 
       - name: Inject Tweaks Into IPA
         run: |
@@ -122,7 +121,7 @@ jobs:
           cd .. && rm -rf lc_sign
 
       - name: Create a Draft Release
-        uses: softprops/action-gh-release@v3
+        uses: softprops/action-gh-release@v2.6.2
         with:
           tag_name: youproextra-noytlite-ipa${{ github.run_number }}
           name: YouProExtra_NoYTLite_${{ env.YT_VERSION }} (${{ github.run_number }})

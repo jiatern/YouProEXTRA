@@ -104,11 +104,10 @@ jobs:
           fi
           echo "YOUPRO_VERSION=$(grep '^Version:' control | awk '{print $2}' | tr -d '\r')" >> $GITHUB_ENV
 
-      - name: Install cyan
-        run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
-        
-      - name: Install ldid
-        run: brew install ldid
+      - name: Install cyan and ldid
+        run: |
+          pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
+          brew install ldid
 
       - name: Inject Tweaks Into IPA
         run: |
@@ -127,7 +126,7 @@ jobs:
           cd .. && rm -rf lc_sign
 
       - name: Create a Draft Release
-        uses: softprops/action-gh-release@v3
+        uses: softprops/action-gh-release@v2.6.2
         with:
           tag_name: youproextra-ipa${{ github.run_number }}
           name: YouProExtra_${{ env.YT_VERSION }}_${{ env.YOUPRO_VERSION }} (${{ github.run_number }})

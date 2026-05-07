@@ -333,7 +333,7 @@ jobs:
           cd .. && rm -rf lc_sign
 
       - name: Create a Draft Release
-        uses: softprops/action-gh-release@v3
+        uses: softprops/action-gh-release@v2.6.2
         with:
           tag_name: ytl-ipa${{ github.run_number }}
           name: YouTubePlus_${{ env.YT_VERSION }}_${{ env.YTL_VERSION }} (${{ github.run_number }})
