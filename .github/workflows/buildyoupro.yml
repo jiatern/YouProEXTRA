@@ -107,10 +107,9 @@ jobs:
           echo "YOUPRO_VERSION=$(grep '^Version:' control | awk '{print $2}' | tr -d '\r')" >> $GITHUB_ENV
           cd .. && rm -rf _youpro_extract
 
-      - name: Install cyan and ldid
+      - name: Install cyan
         run: |
           pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
-          brew install ldid
 
       - name: Inject Tweaks Into IPA
         run: |
